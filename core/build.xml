@@ -1,0 +1,16 @@
+<project name="Mdl Loader" default="antlr" basedir=".">
+    <property name="srcgen" location="./src-gen" />
+    <property name="antlr4" location="./lib/antlr-4.5-complete.jar" />
+    <property name="grammarspec_antlr" location="parserspec/MdlGrammar.g4" />
+	<target name="antlr">
+		<java jar="${antlr4}" fork="true">
+			<arg value="-o"/>
+			<arg value="./src-gen/de/frotty/mdlviewer/antlr"/>
+			<arg value="-no-listener"/>
+			<arg value="-visitor"/>
+			<arg value="-package"/>
+			<arg value="de.frotty.mdlviewer.antlr"/>
+			<arg value="${grammarspec_antlr}"/>
+		</java>
+	</target>
+</project>
